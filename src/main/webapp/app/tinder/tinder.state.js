@@ -25,7 +25,10 @@
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                     $translatePartialLoader.addPart('tinder');
                     return $translate.refresh();
-                }]
+                }],
+                info: function ($sessionStorage) {
+                    return $sessionStorage["info"]
+                }
             }
         });
     }
