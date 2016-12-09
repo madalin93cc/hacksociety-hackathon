@@ -5,11 +5,12 @@
         .module('hacksocietyApp')
         .controller('TinderController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'info'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, info) {
         var vm = this;
 
+        vm.info = info;
         vm.itemsCollection = [{
             thumbnail: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg',
             title: 'Clara Oswin Oswald',
