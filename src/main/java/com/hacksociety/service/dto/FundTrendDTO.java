@@ -5,7 +5,7 @@ package com.hacksociety.service.dto;
  */
 public class FundTrendDTO {
     private String code;
-    private Float value;
+    private Double value;
 
     public String getCode() {
         return code;
@@ -15,15 +15,15 @@ public class FundTrendDTO {
         this.code = code;
     }
 
-    public Float getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Float value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
-    public FundTrendDTO(String code, Float value) {
+    public FundTrendDTO(String code, Double value) {
         this.code = code;
         this.value = value;
     }
