@@ -52,7 +52,6 @@ public class FundService {
     public Map<String, Object> getLastesPerf(String code) {
         Map<String, Object> performance = this.getPerformanceByCode(code);
         if (performance != null) {
-            performance = (Map) performance.get("resultMap");
             performance = (Map) ((Map) ((ArrayList) performance.get("RETURNS")).get(0)).get("latestPerf");
 
             return performance;

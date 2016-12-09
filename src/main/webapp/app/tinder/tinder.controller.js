@@ -13,7 +13,7 @@
         angular.forEach(nasdaqs, function (nasdaq) {
             vm.itemsCollection.push({
                 thumbnail: nasdaq.imageUrl,
-                title: nasdaq.ticker,
+                title: nasdaq.name + " - " + nasdaq.ticker,
                 subtitle: 'clara@gmail.com'
             })
         });

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public enum NasdaqEnum implements Serializable {
     AAPL("AAPL", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/2000px-Apple_logo_black.svg.png", "Apple"),
     GOOG("GOOG", "https://lh3.googleusercontent.com/-qn7Hl_AXEOA/Vegu58jvBrI/AAAAAAAAAVA/RtkSABWWZsU/w768-h768/Google_icon_2015.png", "Google"),
-    MSFT("MSFT", "https://c.s-microsoft.com/en-us/CMSImages/lrn-share-site-ms-logo.png?version=bf62922f-fda3-d328-e220-b699eac0d6c0", "MSFT");
+    MSFT("MSFT", "https://c.s-microsoft.com/en-us/CMSImages/lrn-share-site-ms-logo.png?version=bf62922f-fda3-d328-e220-b699eac0d6c0", "Microsoft");
 
     private String ticker;
     private String url;
