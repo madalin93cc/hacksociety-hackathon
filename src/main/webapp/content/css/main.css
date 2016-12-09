@@ -373,4 +373,8 @@ Social Buttons
     color: #fff;
 }
 
+.card {
+    height: 100%!important;
+}
+
 /* jhipster-needle-css-add-main JHipster will add new css style */
