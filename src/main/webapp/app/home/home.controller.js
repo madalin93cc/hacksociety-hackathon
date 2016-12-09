@@ -50,8 +50,8 @@
 
         vm.showinfo = true;
 
-        vm.swipeend = function(){
-            vm.actions.unshift({name: 'Collection Empty'});
+        vm.collectionEmpty = function(){
+            //TODO
         };
 
         vm.clickedTimes = 0;
