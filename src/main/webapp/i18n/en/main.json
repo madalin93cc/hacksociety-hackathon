@@ -1,0 +1,14 @@
+{
+    "main": {
+        "title": "Welcome form",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "submit": "Check your choices",
+        "placeholder": {
+            "name": "Enter your name",
+            "surname": "Enter your surname",
+            "email": "Enter your email"
+        }
+    }
+}
