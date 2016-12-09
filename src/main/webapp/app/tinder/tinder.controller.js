@@ -30,7 +30,6 @@
             //TODO
         };
 
-        // vm.clickedTimes = 0;
 
         vm.swipeLeft = function(item){
 

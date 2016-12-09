@@ -49,6 +49,18 @@ public class FundService {
         return (Map)json.get("resultMap");
     }
 
+    public Map<String, Object> getLastesPerf(String code) {
+        Map<String, Object> performance = this.getPerformanceByCode(code);
+        if (performance != null) {
+            performance = (Map) performance.get("resultMap");
+            performance = (Map) ((Map) ((ArrayList) performance.get("RETURNS")).get(0)).get("latestPerf");
+
+            return performance;
+        }
+
+        return null;
+    }
+
     static public List<FundTrendDTO> getAllFundTrends() {
         List<FundTrendDTO> fundTrendDTOs = new ArrayList<>();
         for (NasdaqEnum nasdaqEnum: NasdaqEnum.values()) {
