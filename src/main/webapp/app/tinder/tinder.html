@@ -1,5 +1,17 @@
 <div ng-cloak>
     <div class="row">
-
+        <ng-swippy
+            collection='vm.itemsCollection'
+            width='{{vm.size.width}}px'
+            height='{{vm.size.height}}px'
+            item-click='vm.myCustomFunction'
+            data='vm.showinfo'
+            collection-empty='swipeend'
+            swipe-left='vm.swipeLeft'
+            swipe-right='vm.swipeRight'
+            cards-number='3'
+            label-ok='Cool'
+            label-negative='Bad'>
+        </ng-swippy>
     </div>
 </div>
