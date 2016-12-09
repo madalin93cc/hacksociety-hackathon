@@ -27,7 +27,7 @@ spring:
         url: jdbc:mysql://54.186.238.138:3306/hacksociety?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
-        password: root
+        password: amazonuser
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -37,7 +37,7 @@ spring:
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: MYSQL
-        show-sql: true
+        show-sql: false
         properties:
             hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
