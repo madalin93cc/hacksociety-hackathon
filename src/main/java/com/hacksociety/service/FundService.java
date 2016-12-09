@@ -19,6 +19,7 @@ import java.util.Map;
  */
 @Service
 public class FundService {
+    private static Map<String, Map<String, Object>> cache = new HashMap<>();
 
     @Autowired
     private RestTemplate restTemplate;
@@ -33,7 +34,12 @@ public class FundService {
 
     public Map<String, Object> getPerformanceByCode(String code) {
         JSONObject jsonObject = null;
-        String str = restTemplate.getForObject("https://www.blackrock.com/tools/hackathon/performance?identifiers=" + code, String.class);
+
+        if (cache.containsKey(code)) {
+            return cache.get(code);
+        }
+
+        String str = restTemplate.getForObject("https://www.blackrock.com/tools/hackathon/performance?identifiers=" + code + "&returnsType=MONTHLY", String.class );
         try {
             jsonObject = new JSONObject(str);
         } catch (Exception e) {
@@ -41,7 +47,9 @@ public class FundService {
         }
         JsonParser jsonParser = new JacksonJsonParser();
         Map<String, Object> json = jsonParser.parseMap(str);
-        return (HashMap)json.get("resultMap");
+        cache.put(code, json);
+
+        return (Map)json.get("resultMap");
     }
 
     static public List<FundTrendDTO> getAllFundTrends() {

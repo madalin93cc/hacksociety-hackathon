@@ -18,6 +18,8 @@
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
             'ngEmoticons',
+            'ngTouch',
+            'ngSwippy',
             'ngMaterial'
         ])
         .run(run);

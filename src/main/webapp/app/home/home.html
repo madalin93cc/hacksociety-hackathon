@@ -11,6 +11,11 @@
                     <hr>
                     <h4>Appl </h4>
                 </div>
+
+                <ng-swippy collection='vm.itemsCollection' width='500px' height='400px'
+                           item-click='myCustomFunction' data='true' collection-empty='swipeend'
+                           swipe-left='swipeLeft' swipe-right='swipeRight' cards-number='2' label-ok='Cool'
+                           label-negative='Bad'></ng-swippy>
             </div>
         </div>
     </div>

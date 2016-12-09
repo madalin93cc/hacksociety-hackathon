@@ -5,7 +5,7 @@
         .module('hacksocietyApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state',];
 
     function HomeController ($scope, Principal, LoginService, $state) {
         var vm = this;
@@ -29,5 +29,15 @@
         function register () {
             $state.go('register');
         }
+
+        vm.itemsCollection = [{
+            thumbnail: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg',
+            title: 'Clara Oswin Oswald',
+            subtitle: 'clara@gmail.com'
+        }, {
+            thumbnail: 'plm.jpg',
+            title: 'Emy Pond',
+            subtitle: 'emy@gmail.com'
+        }]
     }
 })();
