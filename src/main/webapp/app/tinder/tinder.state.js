@@ -28,6 +28,9 @@
                 }],
                 info: function ($sessionStorage) {
                     return $sessionStorage["info"]
+                },
+                nasdaqs: function (TinderService) {
+                    return TinderService.getNasdaqs();
                 }
             }
         });
