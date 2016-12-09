@@ -14,22 +14,56 @@
                     <label for="email" data-translate="main.email">Email</label>
                     <input ng-model="vm.info.account.email" type="email" class="form-control" id="email" placeholder="{{'main.placeholder.email' | translate}}">
                 </div>
-                <button ng-click="vm.goToTinder()" class="btn btn-default" data-translate="main.submit">Go</button>
             </div>
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="form-group">
-                    <label for="name" data-translate="main.name"></label>
-                    <input type="text" class="form-control" id="name" placeholder="{{'main.placeholder.name' | translate}}">
+                    <label data-translate="main.expected"></label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ui-select ng-model="info.expect.period" theme="bootstrap">
+                                <ui-select-match placeholder="{{'main.placeholder.period' | translate}}">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="period in vm.periods | filter: $select.search">
+                                    <div ng-bind-html="period.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="col-sm-6">
+                            <ui-select ng-model="vm.info.expect.percent" theme="bootstrap">
+                                <ui-select-match placeholder="{{'main.placeholder.percent' | translate}}">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="percent in vm.percents | filter: $select.search">
+                                    <div ng-bind-html="percent.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="surname" data-translate="main.surname"></label>
-                    <input type="text" class="form-control" id="surname" placeholder="{{'main.placeholder.name' | translate}}">
-                </div>
-                <div class="form-group">
-                    <label for="email" data-translate="main.email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="{{'main.placeholder.email' | translate}}">
+                    <label data-translate="main.past"></label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ui-select ng-model="info.past.period" theme="bootstrap">
+                                <ui-select-match placeholder="{{'main.placeholder.period' | translate}}">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="period in vm.periods | filter: $select.search">
+                                    <div ng-bind-html="period.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="col-sm-6">
+                            <ui-select ng-model="vm.info.past.percent" theme="bootstrap">
+                                <ui-select-match placeholder="{{'main.placeholder.percent' | translate}}">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="percent in vm.percents | filter: $select.search">
+                                    <div ng-bind-html="percent.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-sm-offset-5">
+            <button ng-click="vm.goToTinder()" class="btn btn-primary" data-translate="main.submit">Go</button>
+        </div>
     </div>
 </div>

@@ -20,7 +20,9 @@
             'ngEmoticons',
             'ngTouch',
             'ngSwippy',
-            'ngMaterial'
+            'ngMaterial',
+            'ui.select',
+            'toastr'
         ])
         .run(run);
 

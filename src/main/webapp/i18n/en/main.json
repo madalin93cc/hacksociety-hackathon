@@ -5,10 +5,14 @@
         "surname": "Surname",
         "email": "Email",
         "submit": "Check your choices",
+        "expected": "Expected profit",
+        "past": "Latest profit",
         "placeholder": {
             "name": "Enter your name",
             "surname": "Enter your surname",
-            "email": "Enter your email"
+            "email": "Enter your email",
+            "period": "Select a time interval",
+            "percent": "Select an expected percent"
         }
     }
 }

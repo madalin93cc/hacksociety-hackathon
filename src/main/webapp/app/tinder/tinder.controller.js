@@ -5,9 +5,9 @@
         .module('hacksocietyApp')
         .controller('TinderController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'info', 'TinderService', 'nasdaqs'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'info', 'TinderService', 'nasdaqs', 'toastr'];
 
-    function HomeController ($scope, Principal, LoginService, $state, info, TinderService, nasdaqs) {
+    function HomeController ($scope, Principal, LoginService, $state, info, TinderService, nasdaqs, toastr) {
         var vm = this;
         vm.itemsCollection = [];
         angular.forEach(nasdaqs, function (nasdaq) {
@@ -18,11 +18,7 @@
             })
         });
         vm.info = info;
-
-        vm.size = {
-            width: 300,
-            height: 400
-        };
+        var matches = [];
 
         vm.myCustomFunction = function () {
 
@@ -32,19 +28,19 @@
 
         vm.collectionEmpty = function(){
             //TODO
-            console.log("plm");
         };
 
-        vm.clickedTimes = 0;
+        // vm.clickedTimes = 0;
 
-        vm.actions = [];
+        vm.swipeLeft = function(item){
 
-        vm.swipeLeft = function(person){
-            vm.actions.unshift({name: 'Left swipe'});
         };
 
-        vm.swipeRight = function(person){
-            vm.actions.unshift({name: 'Right swipe'});
+        vm.swipeRight = function(item){
+            // TODO check if match
+            matches.push(item);
+            console.log(matches)
+            toastr.success("It's a match!", "Toastr fun!");
         };
     }
 })();

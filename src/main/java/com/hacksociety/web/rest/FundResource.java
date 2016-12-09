@@ -31,4 +31,9 @@ public class FundResource {
     public List<FundTrendDTO> getAllFundTrends() {
         return fundService.getAllFromCache();
     }
+
+    @RequestMapping(value = "/fund/all/latestPerf/{code}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public FundTrendDTO getFundTrendsByCode(@PathVariable String code) {
+        return fundService.getFromCacheByCode(code);
+    }
 }

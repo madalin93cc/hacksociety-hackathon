@@ -9,10 +9,7 @@ import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Madalin.Colezea on 12/9/2016.
@@ -80,5 +77,14 @@ public class FundService {
 
     public List<FundTrendDTO> getAllFromCache() {
         return fundTrendDTOs;
+    }
+
+    public FundTrendDTO getFromCacheByCode(String code) {
+        Optional<FundTrendDTO> result = fundTrendDTOs.stream().filter(a->a.getCode().equals(code)).findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        } else {
+            return null;
+        }
     }
 }
