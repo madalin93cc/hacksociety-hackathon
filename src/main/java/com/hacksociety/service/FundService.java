@@ -67,6 +67,8 @@ public class FundService {
             FundTrendDTO fundTrendDTO = new FundTrendDTO();
             fundTrendDTO.setCode(nasdaqEnum.name());
             fundTrendDTO.setValue(getValueForCode(nasdaqEnum.name()));
+            fundTrendDTO.setName(nasdaqEnum.getName());
+            fundTrendDTO.setHost(nasdaqEnum.getHost());
             fundTrendDTOs.add(fundTrendDTO);
         }
         return fundTrendDTOs;
@@ -93,6 +95,15 @@ public class FundService {
 
     public FundTrendDTO getFromCacheByCode(String code) {
         Optional<FundTrendDTO> result = fundTrendDTOs.stream().filter(a->a.getCode().equals(code)).findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        } else {
+            return null;
+        }
+    }
+
+    public FundTrendDTO getFromCacheByHost(String host) {
+        Optional<FundTrendDTO> result = fundTrendDTOs.stream().filter(a->a.getHost().contains(host)).findFirst();
         if (result.isPresent()) {
             return result.get();
         } else {

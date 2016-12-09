@@ -4,10 +4,7 @@ import com.hacksociety.service.FundService;
 import com.hacksociety.service.dto.FundTrendDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -35,5 +32,10 @@ public class FundResource {
     @RequestMapping(value = "/fund/all/latestPerf/{code}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public FundTrendDTO getFundTrendsByCode(@PathVariable String code) {
         return fundService.getFromCacheByCode(code);
+    }
+
+    @RequestMapping(value = "/fund/all/latestPerf", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public FundTrendDTO getFundTrendsByHost(@RequestBody String host) {
+        return fundService.getFromCacheByHost(host);
     }
 }
