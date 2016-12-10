@@ -98,7 +98,7 @@
             // TODO check if match
             if (checkMatch(item, info.past)) {
                 matches.push(item);
-                toastr.success("It's a match!", "Toastr fun!");
+                toastr.success("Invest in it to make money!", "It's a match!");
             }
             console.log(matches);
         };

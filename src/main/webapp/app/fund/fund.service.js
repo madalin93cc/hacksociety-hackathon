@@ -11,8 +11,8 @@
         var service = {
             getPerformance: getPerformance,
             getLatestPerformance: getLatestPerformance,
-            getRisks: getRisks
-            getCompanyDescription: getCompanyDescription,
+            getRisks: getRisks,
+            getCompanyDescription: getCompanyDescription
         };
 
         return service;
