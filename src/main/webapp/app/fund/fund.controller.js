@@ -5,9 +5,9 @@
         .module('hacksocietyApp')
         .controller('FundController', FundController);
 
-    FundController.$inject = ['$scope', '$stateParams', 'FundService'];
+    FundController.$inject = ['$scope', '$stateParams', 'FundService', 'LoginService', '$state'];
 
-    function FundController ($scope, $stateParams, FundService) {
+    function FundController ($scope, $stateParams, FundService, LoginService, $state) {
         var vm = this;
         var ticker = $stateParams.ticker;
 
@@ -15,8 +15,8 @@
             vm.performanceChartOptions = {
                 chart: {
                     type: 'historicalBarChart',
-                    height: 250,
-                    width: 400,
+                    height: 500,
+                    width: 500,
                     margin : {
                         top: 20,
                         right: 20,
@@ -120,5 +120,12 @@
             ];
         });
 
+
+        vm.loadFeed = function(e) {
+            LoginService.parseFeed($scope.feedSrc).then(function(res) {
+                vm.feeds = res.data.responseData.feed.entries;
+            });
+
+        };
     }
 })();

@@ -4,15 +4,15 @@
         "name": "Name",
         "surname": "Surname",
         "email": "Email",
-        "submit": "Check your choices",
+        "submit": "Find your matches",
         "expected": "Expected profit",
         "past": "Latest profit",
         "placeholder": {
             "name": "Enter your name",
             "surname": "Enter your surname",
             "email": "Enter your email",
-            "period": "Select a time interval",
-            "percent": "Select an expected percent"
+            "period": "Select time interval",
+            "percent": "Select expected percent"
         }
     }
 }

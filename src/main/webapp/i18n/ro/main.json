@@ -1,8 +1,18 @@
 {
     "main": {
-        "title": "Welcome form",
+        "title": "Fond",
         "name": "Prenume",
         "surname": "Nume",
-        "email": "Emaiul"
+        "email": "Email",
+        "submit": "Find your matches",
+        "expected": "Profit asteptat",
+        "past": "Profit anterior",
+        "placeholder": {
+            "name": "Introdu prenumele",
+            "surname": "Introdu numele",
+            "email": "Introdu email-ul",
+            "period": "Selecteaza interval",
+            "percent": "Selecteaza procentajul"
+        }
     }
 }
