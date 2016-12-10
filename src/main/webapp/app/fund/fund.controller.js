@@ -71,5 +71,54 @@
                 }];
         });
 
+        FundService.getRisks(ticker).then(function (response) {
+            var risk = response.data;
+
+            vm.optionsPie = {
+                chart: {
+                    type: 'pieChart',
+                    height: 500,
+                    width: 500,
+                    x: function (d) {
+                        return d.key;
+                    },
+                    y: function (d) {
+                        return d.y;
+                    },
+                    showLabels: true,
+                    duration: 500,
+                    labelThreshold: 0.01,
+                    labelSunbeamLayout: true,
+                    legend: {
+                        margin: {
+                            top: 5,
+                            right: 35,
+                            bottom: 5,
+                            left: 0
+                        }
+                    }
+                }
+            };
+
+            vm.dataPie = [
+                {
+                    key: "Country Risk",
+                    y: risk.countryRisk
+                },
+                {
+                    key: "Risk Market",
+                    y: risk.riskMarket
+                },
+                {
+                    key: "Risk Sector",
+                    y: risk.riskSector
+                },
+                {
+                    key: "Risk Specific",
+                    y: risk.riskSpecific
+                }
+            ];
+        });
+
     }
 })();

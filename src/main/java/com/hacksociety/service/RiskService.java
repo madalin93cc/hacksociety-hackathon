@@ -50,15 +50,17 @@ public class RiskService {
 
         Map<String, Object> holdings = (Map) ((List) ((Map) ((List) ((Map) ((List) ((Map) json.get("resultMap")).get("PORTFOLIOS")).get(0)).get("portfolios")).get(0)).get("holdings")).get(0);
         Map<String, Object> riskData = (Map) holdings.get("riskData");
+        Map<String, Object> riskFactorsMap = (Map) riskData.get("riskFactorsMap");
         RiskDTO riskDTO = new RiskDTO();
 
         riskDTO.setCountry(holdings.get("country").toString());
         riskDTO.setCurrency(holdings.get("currency").toString());
         riskDTO.setSector(holdings.get("gics1Sector").toString());
         riskDTO.setTotalRisk((Double) riskData.get("totalRisk"));
-        riskDTO.setCountryRisk((Double) riskData.get("riskCountry"));
-        riskDTO.setRiskSector((Double) riskData.get("riskSector"));
-        riskDTO.setRiskSpecific((Double) riskData.get("riskSpecific"));
+        riskDTO.setCountryRisk((Double) ((Map) riskFactorsMap.get("riskCountry")).get("contribution"));
+        riskDTO.setRiskSector((Double) ((Map) riskFactorsMap.get("riskSector")).get("contribution"));
+        riskDTO.setRiskSpecific((Double) ((Map) riskFactorsMap.get("riskSpecific")).get("contribution"));
+        riskDTO.setRiskMarket((Double) ((Map) riskFactorsMap.get("riskMarket")).get("contribution"));
 
         cache.put(code, riskDTO);
 
