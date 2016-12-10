@@ -73,4 +73,33 @@
             <button ng-disabled="!mainform.$valid" ng-click="vm.goToTinder()" class="btn btn-primary" data-translate="main.submit">Go</button>
         </div>
     </div>
+    <div class="panel panel-default" class="col-sm-6">
+        <div>
+            <div ng-init="feedSrc='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog'; vm.loadFeed($event);">
+
+                <p>
+                    <a href="#/main"
+                       ng-click="feedSrc='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog';vm.loadFeed($event);">Yahoo
+                        Finance</a> |
+                    <a href="#/main"
+                       ng-click="feedSrc='https://www.bloomberg.com/feeds/podcasts/etf_report.xml';vm.loadFeed($event);">Bloomberg</a>
+                    |
+                    <a href="#/main"
+                       ng-click="feedSrc='http://rss.cnn.com/rss/cnn_topstories.rss';vm.loadFeed($event);">CNN</a> |
+                    <a href="#/main"
+                       ng-click="feedSrc='http://feeds.reuters.com/reuters/businessNews';vm.loadFeed($event);">Reuters</a>
+                </p>
+
+                <ul class="unstyled">
+                    <li ng-repeat="feed in vm.feeds | filter:filterText">
+                        <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>
+                        <p class="date">{{feed.publishedDate | date : format : timezone}}</p>
+
+                        <p ng-bind-html="feed.content"></p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
 </div>

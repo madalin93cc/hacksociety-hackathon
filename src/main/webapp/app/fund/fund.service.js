@@ -9,13 +9,18 @@
 
     function FundService ($http) {
         var service = {
-            getPerformance: getPerformance
+            getPerformance: getPerformance,
+            getLatestPerformance: getLatestPerformance
         };
 
         return service;
 
         function getPerformance (ticker) {
             return $http.get('public/fund/performance/' + ticker);
+        }
+
+        function getLatestPerformance (ticker) {
+            return $http.get('public/fund/performance/latest/' + ticker);
         }
     }
 })();

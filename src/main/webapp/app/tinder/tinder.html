@@ -12,8 +12,8 @@
                 swipe-left='vm.swipeLeft'
                 swipe-right='vm.swipeRight'
                 cards-number='3'
-                label-ok='Cool'
-                label-negative='Bad'>
+                label-ok='I want to invest'
+                label-negative="I don't want to invest">
             </ng-swippy>
         </div>
         <div class="col-sm-1 col-sm-offset-2 pull-right" style="height: 40em !important; background-color: green; opacity: 0.3"></div>
@@ -22,38 +22,43 @@
 
 <script type="text/ng-template" id="tinderModal.html">
     <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
+        <h3 style="text-align: center" class="modal-title" id="modal-title">My matches</h3>
     </div>
     <div class="modal-body" id="modal-body">
-        <div class="row"  ng-repeat="item in vm.allItems">
-            <div class="col-sm-4">
-                <md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
-                    <md-card-title>
-                        <md-card-title-media>
-                            <div class="md-media-sm card-media">
-                                <img ng-src="{{item.thumbnail}}">
+        <div class="row"  ng-repeat="item in vm.allItems | orderBy: '-match'">
+            <div class="col-sm-12">
+                <div class="panel panel-default" ng-class="{'green-bgd': item.match === true}">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <h1 class="md-headline">{{item.title}}</h1>
+                                        <h2 class="md-subhead">{{item.subtitle}}</h2>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a class="btn btn-primary" href="https://www.blackrock.com/">Invest</a>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a class="btn btn-primary" ng-click="vm.goToFund(item.ticker)">More details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <img class="img-responsive" ng-src="{{item.thumbnail}}">
+                                    </div>
+                                </div>
                             </div>
-                        </md-card-title-media>
-                        <md-card-title-text>
-                            <span class="md-headline">{{item.title}}</span>
-                            <span class="md-subhead">{{item.subtitle}}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-actions layout="row" layout-align="end center" class="layout-align-end-center layout-row">
-                        <button class="btn btn-primary" type="button">Invest</button>
-                    </md-card-actions>
-                </md-card>
-            </div>
-            <div class="col-sm-5">
-                <!--<nvd3 options='item.chart.options' data='item.chart.data'></nvd3>-->
-            </div>
-            <div class="col-sm-3">
-
+                            <div class="col-sm-7">
+                                <nvd3 options='item.chart.options' data='item.chart.data'></nvd3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()" ui-sref="main">OK</button>
     </div>
 </script>
