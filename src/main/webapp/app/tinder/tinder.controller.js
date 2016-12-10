@@ -3,11 +3,11 @@
 
     angular
         .module('hacksocietyApp')
-        .controller('TinderController', HomeController);
+        .controller('TinderController', TinderController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'info', 'TinderService', 'nasdaqs', 'toastr'];
+    TinderController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'info', 'TinderService', 'nasdaqs', 'toastr', '$uibModal'];
 
-    function HomeController ($scope, Principal, LoginService, $state, info, TinderService, nasdaqs, toastr) {
+    function TinderController ($scope, Principal, LoginService, $state, info, TinderService, nasdaqs, toastr, $uibModal) {
         var vm = this;
         vm.itemsCollection = [];
         console.log(nasdaqs);
@@ -22,15 +22,53 @@
         var matches = [];
 
         vm.myCustomFunction = function () {
-
         };
 
         vm.showinfo = true;
 
-        vm.collectionEmpty = function(){
-            //TODO
+        vm.open = function () {
+            // var parentElem = parentSelector ?
+            //     angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
+            var modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'tinderModal.html',
+                controller: 'TinderModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    allItems: function () {
+                        var allItems = [];
+                         angular.forEach(vm.itemsCollection, function (item) {
+                           var found = false;
+                           for (var i = 0; i < matches.length; i++) {
+                               if (item.title === matches[i].title) {
+                                   found = true;
+                               }
+                           }
+                           if (found) {
+                               item.match = true;
+                           } else {
+                               item.match = false;
+                           }
+                           allItems.push(item);
+                        });
+                        return allItems;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+
+            }, function () {
+
+            });
         };
 
+        vm.collectionEmpty = function(){
+            vm.open()
+        };
 
         vm.swipeLeft = function(item){
 

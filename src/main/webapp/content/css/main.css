@@ -379,4 +379,27 @@ Social Buttons
     height: 100%!important;
 }
 
+.modal{
+    display: block !important; /* I added this to see the modal, you don't need this */
+}
+
+.modal-body{
+    height: 550px;
+    overflow-y: auto;
+}
+
+.modal-dialog {
+    width: 80%;
+    /*height: 50%;*/
+    overflow-y: initial !important;
+    /*margin: 0;*/
+    /*padding: 0;*/
+}
+
+/*.modal-content {*/
+    /*height: auto;*/
+    /*min-height: 100%;*/
+    /*border-radius: 0;*/
+/*}*/
+
 /* jhipster-needle-css-add-main JHipster will add new css style */
