@@ -119,7 +119,7 @@
             {
                 "key" : "Quantity" ,
                 "bar": true,
-                "values" : plm
+                "values" : "plm"
             }];
     }
 })();
