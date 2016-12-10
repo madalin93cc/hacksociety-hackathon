@@ -12,5 +12,8 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
     {hostContains: '.apple.'},
     {hostContains: '.google.'},
     {hostContains: '.microsoft.'},
+    {hostContains: '.paypal.'},
+    {hostContains: '.starbucks.'},
+    {hostContains: '.visa.'},
     ]
 });
