@@ -29,7 +29,7 @@ function buildDocument(data) {
 
   var investBtn = document.createElement('button');
   investBtn.id = 'hacksociety-invest-btn';
-  url = "http://localhost:8080/#!/ticker/" + data.code;
+  url = "http://localhost:8080/#/ticker/" + data.code;
   console.log(url);
   investBtn.innerHTML = '<a href=' + url + ' target="_blank">Invest now</a>';
   investBtn.addEventListener("click", closeIframe, false);
