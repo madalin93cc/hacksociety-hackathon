@@ -29,14 +29,14 @@ function buildDocument(data) {
 
   var investBtn = document.createElement('button');
   investBtn.id = 'hacksociety-invest-btn';
-  url = "http://10.4.255.200:8080/#!/ticker/" + data.code;
+  url = "http://localhost:8080/#!/ticker/" + data.code;
   console.log(url);
   investBtn.innerHTML = '<a href=' + url + ' target="_blank">Invest now</a>';
   investBtn.addEventListener("click", closeIframe, false);
 
   var redirectBtn = document.createElement('button');
   redirectBtn.id = 'hacksociety-redirect-btn';
-  redirectBtn.innerHTML = '<a href="http://10.4.255.200:8080" target="_blank">Check it out</a>';
+  redirectBtn.innerHTML = '<a href="http://localhost:8080" target="_blank">Check it out</a>';
   redirectBtn.addEventListener("click", closeIframe, false);
 
   var closeBtn = document.createElement('button');
@@ -46,7 +46,7 @@ function buildDocument(data) {
 
   var footerDiv = document.createElement('div');
   footerDiv.id = 'footer-div';
-  footerDiv.innerHTML = '<a href="http://10.4.255.200:8080">HackSociety</a>';
+  footerDiv.innerHTML = '<a href="http://localhost:8080">HackSociety</a>';
 
   var extension_popup = document.createElement('div');
   extension_popup.style.zIndex = 100000;
@@ -83,7 +83,7 @@ if(!popup && !closed) {
       buildDocument(JSON.parse(xmlHttp.responseText));
     }
   };
-  url = 'https://10.4.255.200/public/fund/all/latestPerf/';
+  url = 'https://localhost/public/fund/all/latestPerf/';
   data = document.location.host;
   xmlHttp.open("POST", url, true); // true for asynchronous
   xmlHttp.send(data);
