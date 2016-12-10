@@ -98,6 +98,13 @@
                 max: 1000
             }
         //    8, 10 ,4 , 9
-        ]
+        ];
+
+        vm.loadFeed = function(e) {
+            LoginService.parseFeed($scope.feedSrc).then(function(res) {
+                vm.feeds = res.data.responseData.feed.entries;
+            });
+
+        };
     }
 })();
