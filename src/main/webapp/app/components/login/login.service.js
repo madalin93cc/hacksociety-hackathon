@@ -5,11 +5,15 @@
         .module('hacksocietyApp')
         .factory('LoginService', LoginService);
 
-    LoginService.$inject = ['$uibModal'];
+    LoginService.$inject = ['$uibModal', '$http'];
 
-    function LoginService ($uibModal) {
+    function LoginService ($uibModal, $http) {
         var service = {
-            open: open
+            open: open,
+            parseFeed: function(url) {
+
+                return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+            }
         };
 
         var modalInstance = null;
