@@ -22,7 +22,8 @@
             'ngSwippy',
             'ngMaterial',
             'ui.select',
-            'toastr'
+            'toastr',
+            'nvd3'
         ])
         .run(run);
 

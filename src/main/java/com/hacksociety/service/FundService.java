@@ -102,7 +102,7 @@ public class FundService {
     }
 
     public FundTrendDTO getFromCacheByHost(String host) {
-        Optional<FundTrendDTO> result = fundTrendDTOs.stream().filter(a->a.getHost().contains(host)).findFirst();
+        Optional<FundTrendDTO> result = fundTrendDTOs.stream().filter(a -> host.contains(a.getHost())).findFirst();
         if (result.isPresent()) {
             return result.get();
         } else {
