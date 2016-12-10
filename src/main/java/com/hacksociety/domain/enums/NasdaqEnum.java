@@ -3,9 +3,12 @@ package com.hacksociety.domain.enums;
 import java.io.Serializable;
 
 public enum NasdaqEnum implements Serializable {
-    AAPL("AAPL", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/2000px-Apple_logo_black.svg.png", "Apple", "apple"),
-    GOOG("GOOG", "https://lh3.googleusercontent.com/-qn7Hl_AXEOA/Vegu58jvBrI/AAAAAAAAAVA/RtkSABWWZsU/w768-h768/Google_icon_2015.png", "Google", "google"),
-    MSFT("MSFT", "https://c.s-microsoft.com/en-us/CMSImages/lrn-share-site-ms-logo.png?version=bf62922f-fda3-d328-e220-b699eac0d6c0", "Microsoft", "microsoft");
+    AAPL("AAPL", "http://diylogodesigns.com/blog/wp-content/uploads/2016/04/Apple-Logo-black-png-transparent.png", "Apple Inc.", "apple"),
+    GOOG("GOOG", "http://diylogodesigns.com/blog/wp-content/uploads/2016/04/new-google-logo-png.png", "Google Inc.", "google"),
+    MSFT("MSFT", "http://diylogodesigns.com/blog/wp-content/uploads/2016/04/Microsoft-Logo-PNG.png", "Microsoft Corp.", "microsoft"),
+    PYPL("PYPL", "http://logok.org/wp-content/uploads/2014/05/PayPal-logo-20071.png", "PayPal", "paypal"),
+    SBUX("SBUX", "https://t4.rbxcdn.com/3e67c0d5df21a6ea4d9c8623c1c731e8", "Starbucks Corp.", "starbucks"),
+    V("V", "http://www.pngpix.com/wp-content/uploads/2016/07/PNGPIX-COM-Visa-Logo-PNG-Transparent.png", "Visa Inc.", "visa");
 
     private String ticker;
     private String url;
