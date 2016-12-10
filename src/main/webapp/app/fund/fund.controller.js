@@ -119,6 +119,20 @@
                     y: risk.riskSpecific
                 }
             ];
+
+            $scope.optionsRisk = {
+                chart: {
+                    type: 'bulletChart',
+                    duration: 500
+                }
+            };
+
+            $scope.dataRisk = {
+                "title": "Total Risk",
+                "ranges": [25,5,50],
+                "measures": [risk.totalRisk],
+                "markers": [30]
+            }
         });
 
 
