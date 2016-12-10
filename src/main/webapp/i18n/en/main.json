@@ -1,6 +1,6 @@
 {
-    "main": {
-        "title": "Welcome form",
+    "fund": {
+        "title": "Fund",
         "name": "Name",
         "surname": "Surname",
         "email": "Email",

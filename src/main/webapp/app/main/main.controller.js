@@ -22,47 +22,47 @@
 
         vm.periods = [
             {
-                id: '6m',
+                id: 'sixMonth',
                 name: "6 months"
             },
             {
-                id: '1y',
+                id: 'oneYear',
                 name: "1 year"
             },
             {
-                id: '2y',
+                id: 'tyoYear',
                 name: "2 years"
             },
             {
-                id: '3y',
+                id: 'threeYear',
                 name: "3 years"
             },
             {
-                id: '4y',
+                id: 'fourYear',
                 name: "4 years"
             },
             {
-                id: '5y',
+                id: 'fiveYear',
                 name: "5 years"
             },
             {
-                id: '6y',
+                id: 'sixYear',
                 name: "6 years"
             },
             {
-                id: '7y',
+                id: 'sevenYear',
                 name: "7 years"
             },
             {
-                id: '8y',
+                id: 'eightYear',
                 name: "8 years"
             },
             {
-                id: '9y',
+                id: 'nineYear',
                 name: "9 years"
             },
             {
-                id: '10y',
+                id: 'tenYear',
                 name: "10 years"
             }
         ];

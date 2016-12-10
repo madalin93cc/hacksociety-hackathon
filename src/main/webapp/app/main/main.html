@@ -41,7 +41,7 @@
                     <label data-translate="main.past"></label>
                     <div class="row">
                         <div class="col-sm-6">
-                            <ui-select ng-model="info.past.period" theme="bootstrap">
+                            <ui-select ng-model="vm.info.past.period" theme="bootstrap">
                                 <ui-select-match placeholder="{{'main.placeholder.period' | translate}}">{{$select.selected.name}}</ui-select-match>
                                 <ui-select-choices repeat="period in vm.periods | filter: $select.search">
                                     <div ng-bind-html="period.name | highlight: $select.search"></div>
