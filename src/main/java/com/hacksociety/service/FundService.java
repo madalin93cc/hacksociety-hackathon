@@ -44,16 +44,18 @@ public class FundService {
         }
         JsonParser jsonParser = new JacksonJsonParser();
         Map<String, Object> json = jsonParser.parseMap(str);
+        json = (Map)json.get("resultMap");
+        ((Map) ((Map) ((ArrayList) json.get("RETURNS")).get(0)).get("returnsMap")).clear();
+
         cache.put(code, json);
 
-        return (Map)json.get("resultMap");
+        return json;
     }
 
     public Map<String, Object> getLastesPerf(String code) {
         Map<String, Object> performance = this.getPerformanceByCode(code);
         if (performance != null) {
             performance = (Map) ((Map) ((ArrayList) performance.get("RETURNS")).get(0)).get("latestPerf");
-
             return performance;
         }
 
