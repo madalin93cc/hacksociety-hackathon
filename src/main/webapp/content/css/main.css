@@ -390,16 +390,13 @@ Social Buttons
 
 .modal-dialog {
     width: 80%;
-    /*height: 50%;*/
     overflow-y: initial !important;
-    /*margin: 0;*/
-    /*padding: 0;*/
 }
 
-/*.modal-content {*/
-    /*height: auto;*/
-    /*min-height: 100%;*/
-    /*border-radius: 0;*/
-/*}*/
+.green-bgd {
+    background-color: rgba(187, 252, 133, 0.6) !important;
+}
 
-/* jhipster-needle-css-add-main JHipster will add new css style */
+.red-bgd {
+    background-color: rgba(249, 52, 52, 0.6) !important;
+}
