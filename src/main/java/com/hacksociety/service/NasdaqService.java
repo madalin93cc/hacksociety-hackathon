@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional
@@ -35,5 +32,15 @@ public class NasdaqService {
         }
 
         return nasdaqs;
+    }
+
+    public NasdaqDTO getNasdaq(String code) {
+        Optional<NasdaqDTO> nasdaqDTO = getNasdaqs().stream().filter(nasdaq -> nasdaq.getTicker().equals(code)).findAny();
+
+        if (nasdaqDTO.isPresent()) {
+            return nasdaqDTO.get();
+        }
+
+        return null;
     }
 }

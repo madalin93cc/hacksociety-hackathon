@@ -2,24 +2,39 @@
     <div class="row">
         <div class="col-sm-3">
             <div ng-init="feedSrc='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog';feedSrc2='http://rss.cnn.com/rss/cnn_topstories.rss';vm.loadFeed2($event); vm.loadFeed($event);"></div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>News feed</h4>
-                    <ul class="unstyled">
-                        <li ng-repeat="feed in vm.feeds | filter:filterText">
-                            <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>
-                            <p class="date">{{feed.publishedDate | date : format : timezone}}</p>
+            <div class="panel panel-info">
+                <div class="panel-heading">News feed</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>News feed</h4>
+                            <ul class="unstyled">
+                                <li ng-repeat="feed in vm.feeds | filter:filterText">
+                                    <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>
+                                    <p class="date">{{feed.publishedDate | date : format : timezone}}</p>
 
-                            <p ng-bind-html="feed.content"></p>
-                        </li>
-                    </ul>
+                                    <p ng-bind-html="feed.content"></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-9">
             <div class="row">
                 <div class="col-sm-6">
-                    <nvd3 options='vm.optionsPie' data='vm.dataPie'></nvd3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1>{{vm.nasdaq.name}}</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="image-responsive" ng-src="{{vm.nasdaq.imageUrl}}" style="max-width: 150px">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="description" ng-bind-html="vm.companyDescription.html"></div>
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <nvd3 id="performanceChart" options='vm.performanceChartOptions' data='vm.performanceChartData'></nvd3>
@@ -30,12 +45,11 @@
                     <nvd3 options='vm.optionsPie' data='vm.dataPie'></nvd3>
                 </div>
                 <div class="col-sm-6">
-                    <nvd3 id="performanceChart" options='vm.performanceChartOptions' data='vm.performanceChartData'></nvd3>
+                    <nvd3 id="performanceChart" options='vm.performanceChartOptions2' data='vm.performanceChartData2'></nvd3>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="description" ng-bind-html="vm.companyDescription.html">
-<!---->
+
+        <nvd3 options="optionsRisk" data="dataRisk"></nvd3>
     </div>
 </div>

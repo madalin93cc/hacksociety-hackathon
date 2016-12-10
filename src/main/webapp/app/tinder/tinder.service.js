@@ -9,7 +9,8 @@
 
     function TinderService ($http) {
         var service = {
-            getNasdaqs: getNasdaqs
+            getNasdaqs: getNasdaqs,
+            getNasdaq: getNasdaq
         };
 
         return service;
@@ -21,6 +22,15 @@
             function (response) {
                 console.error(response.data);
             });
+        }
+
+        function getNasdaq (code) {
+            return $http.get('public/nasdaqs/' + code).then(function (response) {
+                    return response.data;
+                },
+                function (response) {
+                    console.error(response.data);
+                });
         }
     }
 })();

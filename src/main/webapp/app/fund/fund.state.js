@@ -25,7 +25,10 @@
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
                     $translatePartialLoader.addPart('fund');
                     return $translate.refresh();
-                }]
+                }],
+                nasdaq: function (TinderService, $stateParams) {
+                    return TinderService.getNasdaq($stateParams.ticker);
+                }
             }
         });
     }

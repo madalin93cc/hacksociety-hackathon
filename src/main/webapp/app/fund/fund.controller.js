@@ -5,18 +5,18 @@
         .module('hacksocietyApp')
         .controller('FundController', FundController);
 
-    FundController.$inject = ['$scope', '$stateParams', 'FundService', 'LoginService', '$state'];
+    FundController.$inject = ['$scope', '$stateParams', 'FundService', 'LoginService', 'nasdaq'];
 
-    function FundController ($scope, $stateParams, FundService, LoginService, $state) {
+    function FundController ($scope, $stateParams, FundService, LoginService, nasdaq) {
         var vm = this;
         var ticker = $stateParams.ticker;
-
+        vm.nasdaq = nasdaq;
         FundService.getPerformance(ticker).then(function (response) {
             vm.performanceChartOptions = {
                 chart: {
                     type: 'historicalBarChart',
-                    height: 500,
-                    width: 500,
+                    height: 400,
+                    width: 400,
                     margin : {
                         top: 20,
                         right: 20,
@@ -71,6 +71,65 @@
                 }];
             vm.companyDescription = FundService.getCompanyDescription(ticker);
         });
+        FundService.getLatestPerformance(ticker).then(function (response) {
+            vm.performanceChartOptions2 = {
+                chart: {
+                    type: 'historicalBarChart',
+                    height: 400,
+                    width: 400,
+                    margin : {
+                        top: 20,
+                        right: 20,
+                        bottom: 65,
+                        left: 50
+                    },
+                    x: function(d){return d[0];},
+                    y: function(d){return d[1];},
+                    showValues: true,
+                    valueFormat: function(d){
+                        return d3.format(',.1f')(d);
+                    },
+                    duration: 100,
+                    xAxis: {
+                        axisLabel: 'Performance chart (last 4 years)',
+                        tickFormat: function(d) {
+                            return d3.time.format('%Y')(new Date(d))
+                        },
+                        // rotateLabels: 30,
+                        showMaxMin: true
+                    },
+                    yAxis: {
+                        // axisLabel: 'Y Axis',
+                        axisLabelDistance: -10,
+                        tickFormat: function(d){
+                            return d3.format(',.0f')(d);
+                        },
+                        showMaxMin: false
+                    },
+                    tooltip: {
+                        keyFormatter: function(d) {
+                            return d3.time.format('%x')(new Date(d));
+                        }
+                    },
+                    zoom: {
+                        enabled: true,
+                        scaleExtent: [1, 10],
+                        useFixedDomain: false,
+                        useNiceScale: false,
+                        horizontalOff: false,
+                        verticalOff: true,
+                        unzoomEventType: 'dblclick.zoom'
+                    }
+                }
+            };
+
+            vm.performanceChartData2 = [
+                {
+                    "key" : "Quantity" ,
+                    "bar": true,
+                    "values" : response.data
+                }];
+        });
 
         FundService.getRisks(ticker).then(function (response) {
             var risk = response.data;
@@ -78,8 +137,8 @@
             vm.optionsPie = {
                 chart: {
                     type: 'pieChart',
-                    height: 500,
-                    width: 500,
+                    height: 400,
+                    width: 400,
                     x: function (d) {
                         return d.key;
                     },
@@ -119,6 +178,20 @@
                     y: risk.riskSpecific
                 }
             ];
+
+            $scope.optionsRisk = {
+                chart: {
+                    type: 'bulletChart',
+                    duration: 500
+                }
+            };
+
+            $scope.dataRisk = {
+                "title": "Total Risk",
+                "ranges": [25,5,50],
+                "measures": [risk.totalRisk],
+                "markers": [30]
+            }
         });
 
 
