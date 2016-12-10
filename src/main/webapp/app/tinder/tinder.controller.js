@@ -45,17 +45,22 @@
                     break;
                 }
             }
-            var selItemVal = selItem.latestPerf[past.period.id];
-            var reqVal = past.percent.name;
-            debugger;
+            var selItemVal = selItem.latestPerf[past.period.id] * 100;
+            if ((selItemVal >= past.percent.min) && (selItemVal < past.percent.max)) {
+                return true
+            } else {
+                return false
+            }
+        //    TODO la fel pentru prima perioada
         }
 
         vm.swipeRight = function(item){
             // TODO check if match
-            checkMatch(item, info.past);
-            matches.push(item);
+            if (checkMatch(item, info.past)) {
+                matches.push(item);
+                toastr.success("It's a match!", "Toastr fun!");
+            }
             console.log(matches);
-            toastr.success("It's a match!", "Toastr fun!");
         };
     }
 })();
