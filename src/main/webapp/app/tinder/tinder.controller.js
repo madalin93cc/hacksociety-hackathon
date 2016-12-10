@@ -15,7 +15,8 @@
             vm.itemsCollection.push({
                 thumbnail: nasdaq.imageUrl,
                 title: nasdaq.name + " - " + nasdaq.ticker,
-                subtitle: 'clara@gmail.com'
+                subtitle: 'clara@gmail.com',
+                ticker: nasdaq.ticker
             })
         });
         vm.info = info;
@@ -36,6 +37,7 @@
                 templateUrl: 'tinderModal.html',
                 controller: 'TinderModalController',
                 controllerAs: 'vm',
+                backdrop: 'static',
                 size: 'lg',
                 resolve: {
                     allItems: function () {
@@ -75,7 +77,7 @@
         };
 
         function checkMatch(item, past) {
-            var ticker = item.title.substr(item.title.lastIndexOf(" ") + 1);
+            var ticker = item.ticker;
             var selItem = null;
             for (var i = 0; i < nasdaqs.length; i++) {
                 if (nasdaqs[i].ticker === ticker) {

@@ -52,6 +52,13 @@ public class FundService {
         return json;
     }
 
+    public List getLatestPerformanceByCode(String code) {
+        Map<String, Object> jsonObject = getPerformanceByCode(code);
+        List performances = (List)((Map)((List)jsonObject.get("RETURNS")).get(0)).get("performanceChart");
+        performances = performances.subList((performances.size() >= 48)? performances.size() - 48: 0, performances.size());
+        return performances;
+    }
+
     public Map<String, Object> getLastesPerf(String code) {
         Map<String, Object> performance = this.getPerformanceByCode(code);
         if (performance != null) {

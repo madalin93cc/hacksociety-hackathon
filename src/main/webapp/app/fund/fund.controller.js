@@ -63,7 +63,7 @@
                 }
             };
 
-            chartData = response.data.resultMap.RETURNS[0].performanceChart;
+            chartData = response.data.RETURNS[0].performanceChart;
 
             vm.data = [
                 {

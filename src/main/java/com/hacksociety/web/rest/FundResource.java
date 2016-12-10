@@ -24,6 +24,11 @@ public class FundResource {
         return fundService.getPerformanceByCode(code);
     }
 
+    @RequestMapping(value = "/fund/performance/latest/{code}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List getLatestPerformanceByCode(@PathVariable String code) {
+        return fundService.getLatestPerformanceByCode(code);
+    }
+
     @RequestMapping(value = "/fund/all/latestPerf", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<FundTrendDTO> getAllFundTrends() {
         return fundService.getAllFromCache();
