@@ -10,14 +10,13 @@
     function FundController ($scope, $stateParams, FundService) {
         var vm = this;
         var ticker = $stateParams.ticker;
-        var chartData;
 
         FundService.getPerformance(ticker).then(function (response) {
-            vm.options = {
+            vm.performanceChartOptions = {
                 chart: {
                     type: 'historicalBarChart',
-                    height: 450,
-                    width: 900,
+                    height: 250,
+                    width: 400,
                     margin : {
                         top: 20,
                         right: 20,
@@ -32,19 +31,20 @@
                     },
                     duration: 100,
                     xAxis: {
-                        axisLabel: 'X Axis',
+                        axisLabel: 'Performance chart',
                         tickFormat: function(d) {
-                            return d3.time.format('%x')(new Date(d))
+                            return d3.time.format('%Y')(new Date(d))
                         },
-                        rotateLabels: 30,
-                        showMaxMin: false
+                        // rotateLabels: 30,
+                        showMaxMin: true
                     },
                     yAxis: {
-                        axisLabel: 'Y Axis',
+                        // axisLabel: 'Y Axis',
                         axisLabelDistance: -10,
                         tickFormat: function(d){
-                            return d3.format(',.1f')(d);
-                        }
+                            return d3.format(',.0f')(d);
+                        },
+                        showMaxMin: false
                     },
                     tooltip: {
                         keyFormatter: function(d) {
@@ -63,13 +63,11 @@
                 }
             };
 
-            chartData = response.data.resultMap.RETURNS[0].performanceChart;
-
-            vm.data = [
+            vm.performanceChartData = [
                 {
                     "key" : "Quantity" ,
                     "bar": true,
-                    "values" : chartData
+                    "values" : response.data.RETURNS[0].performanceChart
                 }];
         });
 
