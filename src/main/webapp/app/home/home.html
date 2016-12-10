@@ -1,74 +1,12 @@
 <div ng-cloak>
     <div class="row">
+
+
         <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg" alt="Bootstrap Thumbnail: Beautiful Bootstrap Thumbnail like Material Design Cards">
-                <div class="caption">
-                    <!--<h3>Morgan Freeman  :smiley:</h3>-->
-
-                    <p ng-bind-html-unsafe=":smiley: | emoji"></p>
-                    <div ng-bind-html="vm.text | emoticons:{linkTarget:'_blank'}"></div>
-                    <hr>
-                    <h4>Appl </h4>
-                </div>
-
-                <ng-swippy
-                    collection='vm.itemsCollection'
-                    width='{{vm.size.width}}px'
-                    height='{{vm.size.height}}px'
-                    item-click='vm.myCustomFunction'
-                    data='vm.showinfo'
-                    collection-empty='vm.collectionEmpty'
-                    swipe-left='vm.swipeLeft'
-                    swipe-right='vm.swipeRight'
-                    cards-number='3'
-                    label-ok='Cool'
-                    label-negative='Bad'>
-                </ng-swippy>
-
-                <nvd3 options="vm.options" data="vm.data"></nvd3>
-
-                <!--<ng-swippy collection='vm.itemsCollection' width='500px' height='400px'-->
-                           <!--item-click='myCustomFunction' data='true' collection-empty='swipeend'-->
-                           <!--swipe-left='swipeLeft' swipe-right='swipeRight' cards-number='2' label-ok='Cool'-->
-                           <!--label-negative='Bad'></ng-swippy>-->
+            <div class="col-md-4">
+                <nvd3 options='vm.options' data='vm.data'></nvd3>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <md-card>
-                <md-card-header>
-                    <md-card-avatar>
-                        <img class="md-user-avatar" src="avatar.png">
-                    </md-card-avatar>
-                    <md-card-header-text>
-                        <span class="md-title">Title</span>
-                        <span class="md-subhead">Sub header</span>
-                    </md-card-header-text>
-                </md-card-header>
-                <img ng-src="content/images/hipster2x.png" class="md-card-image" alt="image caption">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">Card headline</span>
-                        <span class="md-subhead">Card subheader</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-actions layout="row" layout-align="start center">
-                    <md-button>Action 1</md-button>
-                    <md-button>Action 2</md-button>
-                    <md-card-icon-actions>
-                        <md-button class="md-icon-button" aria-label="icon">
-                            <md-icon md-svg-icon="icon"></md-icon>
-                        </md-button>
-                    </md-card-icon-actions>
-                </md-card-actions>
-                <md-card-content>
-                    <p>
-                        Card content
-                    </p>
-                </md-card-content>
-            </md-card>
+
         </div>
     </div>
 </div>
