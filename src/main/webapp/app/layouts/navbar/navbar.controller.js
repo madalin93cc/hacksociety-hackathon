@@ -5,13 +5,20 @@
         .module('hacksocietyApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$sessionStorage'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, $sessionStorage) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
-        vm.isAuthenticated = Principal.isAuthenticated;
+        console.log($sessionStorage);
+        try {
+            vm.user = $sessionStorage.info.account;
+            vm.isAuthenticated = Boolean(vm.user.name);
+        } catch(err) {
+            vm.user = null;
+            vm.isAuthenticated = false;
+        }
 
         ProfileService.getProfileInfo().then(function(response) {
             vm.inProduction = response.inProduction;
