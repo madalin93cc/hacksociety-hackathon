@@ -69,6 +69,7 @@
                     "bar": true,
                     "values" : response.data.RETURNS[0].performanceChart
                 }];
+            vm.companyDescription = FundService.getCompanyDescription(ticker);
         });
 
         FundService.getRisks(ticker).then(function (response) {
