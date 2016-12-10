@@ -25,7 +25,8 @@
                         <div class="col-sm-6">
                             <ui-select ng-model="info.expect.period" theme="bootstrap" required>
                                 <ui-select-match placeholder="{{'main.placeholder.period' | translate}}">
-                                    {{$select.selected.name}}</ui-select-match>
+                                    {{$select.selected.name}}
+                                </ui-select-match>
                                 <ui-select-choices repeat="period in vm.periods | filter: $select.search">
                                     <div ng-bind-html="period.name | highlight: $select.search"></div>
                                 </ui-select-choices>
@@ -34,7 +35,8 @@
                         <div class="col-sm-6">
                             <ui-select ng-model="vm.info.expect.percent" theme="bootstrap" required>
                                 <ui-select-match placeholder="{{'main.placeholder.percent' | translate}}">
-                                    {{$select.selected.name}}</ui-select-match>
+                                    {{$select.selected.name}}
+                                </ui-select-match>
                                 <ui-select-choices repeat="percent in vm.percents | filter: $select.search">
                                     <div ng-bind-html="percent.name | highlight: $select.search"></div>
                                 </ui-select-choices>
@@ -48,7 +50,8 @@
                         <div class="col-sm-6">
                             <ui-select ng-model="vm.info.past.period" theme="bootstrap" required>
                                 <ui-select-match placeholder="{{'main.placeholder.period' | translate}}">
-                                    {{$select.selected.name}}</ui-select-match>
+                                    {{$select.selected.name}}
+                                </ui-select-match>
                                 <ui-select-choices repeat="period in vm.periods | filter: $select.search">
                                     <div ng-bind-html="period.name | highlight: $select.search"></div>
                                 </ui-select-choices>
@@ -57,7 +60,8 @@
                         <div class="col-sm-6">
                             <ui-select ng-model="vm.info.past.percent" theme="bootstrap" required>
                                 <ui-select-match placeholder="{{'main.placeholder.percent' | translate}}">
-                                    {{$select.selected.name}}</ui-select-match>
+                                    {{$select.selected.name}}
+                                </ui-select-match>
                                 <ui-select-choices repeat="percent in vm.percents | filter: $select.search">
                                     <div ng-bind-html="percent.name | highlight: $select.search"></div>
                                 </ui-select-choices>
@@ -70,35 +74,50 @@
     </div>
     <div class="row">
         <div class="col-sm-2 col-sm-offset-5">
-            <button ng-disabled="!mainform.$valid" ng-click="vm.goToTinder()" class="btn btn-primary" data-translate="main.submit">Go</button>
+            <button ng-disabled="!mainform.$valid" ng-click="vm.goToTinder()" class="btn btn-primary"
+                    data-translate="main.submit">Go
+            </button>
         </div>
     </div>
-    <div class="panel panel-default" class="col-sm-6">
-        <div>
-            <div ng-init="feedSrc='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog'; vm.loadFeed($event);">
+    <div class="row">
+        <div class="panel panel-info" style="margin-top: 30px">
+            <div class="panel-heading">Economical news feed</div>
+            <div class="panel-body" style="max-height: 310px;overflow-y: scroll;">
+                <div
+                    ng-init="feedSrc1='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog';feedSrc2='http://rss.cnn.com/rss/cnn_topstories.rss';vm.loadFeed2($event); vm.loadFeed1($event);">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="#/main"
+                               ng-click="feedSrc1='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog';vm.loadFeed1($event);">Yahoo
+                                Finance</a> |
+                            <a href="#/main"
+                               ng-click="feedSrc1='https://www.bloomberg.com/feeds/podcasts/etf_report.xml';vm.loadFeed1($event);">Bloomberg</a>
+                            <ul class="unstyled">
+                                <li ng-repeat="feed in vm.feeds1 | filter:filterText">
+                                    <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>
+                                    <p class="date">{{feed.publishedDate | date : format : timezone}}</p>
 
-                <p>
-                    <a href="#/main"
-                       ng-click="feedSrc='http://finance.yahoo.com/rss/headline?s=aapl,msft,goog';vm.loadFeed($event);">Yahoo
-                        Finance</a> |
-                    <a href="#/main"
-                       ng-click="feedSrc='https://www.bloomberg.com/feeds/podcasts/etf_report.xml';vm.loadFeed($event);">Bloomberg</a>
-                    |
-                    <a href="#/main"
-                       ng-click="feedSrc='http://rss.cnn.com/rss/cnn_topstories.rss';vm.loadFeed($event);">CNN</a> |
-                    <a href="#/main"
-                       ng-click="feedSrc='http://feeds.reuters.com/reuters/businessNews';vm.loadFeed($event);">Reuters</a>
-                </p>
+                                    <p ng-bind-html="feed.content"></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="#/main"
+                               ng-click="feedSrc2='http://rss.cnn.com/rss/cnn_topstories.rss';vm.loadFeed2($event);">CNN</a>
+                            |
+                            <a href="#/main"
+                               ng-click="feedSrc2='http://feeds.reuters.com/reuters/businessNews';vm.loadFeed2($event);">Reuters</a>
+                            <ul class="unstyled">
+                                <li ng-repeat="feed in vm.feeds2 | filter:filterText">
+                                    <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>
+                                    <p class="date">{{feed.publishedDate | date : format : timezone}}</p>
 
-                <ul class="unstyled">
-                    <li ng-repeat="feed in vm.feeds | filter:filterText">
-                        <h5><a href="{{feed.link}}">{{feed.title}}</a></h5>
-                        <p class="date">{{feed.publishedDate | date : format : timezone}}</p>
-
-                        <p ng-bind-html="feed.content"></p>
-                    </li>
-                </ul>
-
+                                    <p ng-bind-html="feed.content"></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

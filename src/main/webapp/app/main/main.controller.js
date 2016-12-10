@@ -100,9 +100,15 @@
         //    8, 10 ,4 , 9
         ];
 
-        vm.loadFeed = function(e) {
-            LoginService.parseFeed($scope.feedSrc).then(function(res) {
-                vm.feeds = res.data.responseData.feed.entries;
+        vm.loadFeed1 = function(e) {
+            LoginService.parseFeed($scope.feedSrc1).then(function(res) {
+                vm.feeds1 = res.data.responseData.feed.entries;
+            });
+
+        };
+        vm.loadFeed2 = function(e) {
+            LoginService.parseFeed($scope.feedSrc2).then(function(res) {
+                vm.feeds2 = res.data.responseData.feed.entries;
             });
 
         };

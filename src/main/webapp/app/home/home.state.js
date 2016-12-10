@@ -16,14 +16,16 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/home/home.html',
-                    controller: 'HomeController',
+                    // templateUrl: 'app/home/home.html',
+                    // controller: 'HomeController',
+                    templateUrl: 'app/main/main.html',
+                    controller: 'MainController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('home');
+                    $translatePartialLoader.addPart('main');
                     return $translate.refresh();
                 }]
             }
