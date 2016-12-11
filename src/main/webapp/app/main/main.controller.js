@@ -17,7 +17,7 @@
 
         vm.goToTinder = function () {
             $sessionStorage["info"] = vm.info;
-            $state.go('tinder');
+            $state.go('tinder', {}, {reload: true});
         };
 
         vm.periods = [
